@@ -18,18 +18,13 @@ ui <- fluidPage(theme = shinytheme("journal"),
                 
                 shinyUI(pageWithSidebar(
                     
-                    #ui <-shinyUI(pageWithSidebar(
-                    
-                    headerPanel("Why analyse variances (ANOVA) when interest is in differences in population means?"),
-                    
-                    #sidebarLayout(  #new
-                    # Sidebar with a slider and selection inputs
-                    
+                     
+                    headerPanel("
+                                title "),
+              
                     sidebarPanel( 
                         
-                        div(p("If a researcher is interested in evaluating if there is a difference in the population means between groups a common statistical tool that is used is analysis of variance (ANOVA).
-              It is natural to ask why do we analyse variances to answer the question of a difference in population means? Here we explain why. We simulate a one way ANOVA, and analyse using R. 
-              We work through the calculations manually to shed light on what's going on.")),
+                        div(p("intro here")),
                         
                         div(
                             
@@ -40,12 +35,7 @@ ui <- fluidPage(theme = shinytheme("journal"),
                             selectInput("Model",
                                         strong("Select modelling preference "),
                                         choices=c( "base R" , "VCA package" )),
-                            
-                            
-                            # sidebarPanel(
-                            #    actionButton("read", "Change"),  # new
-                            #   actionButton("write", "Change"),  #new
-                            #),
+                             
                             
                             actionButton("resample", "Simulate a new sample"),
                             br(),br(),
@@ -57,25 +47,9 @@ ui <- fluidPage(theme = shinytheme("journal"),
                             div(strong("Select true population parameters"),p(" ")),
                             
                             
-                            div(("You can choose the number of independent groups. Group sizes can be varied, as well as group means and group standard deviations. The first tab plots the data and presents an ANOVA. 
-                 Above you can select between two plots. There is also an option to look at the output of the VCA package 'Select modelling preference'. Another sample can be taken from the same population/data generating mechanisim by clicking 'Simulate a new sample'.")),
+                            div(("describe input options...another sample can be taken from the same population/data generating mechanisim by clicking 'Simulate a new sample'.")),
                             br(),
-                            
-                            # actionButton(inputId='ab1', label="R code here", 
-                            #              icon = icon("th"), 
-                            #              onclick ="window.open('https://raw.githubusercontent.com/eamonn2014/Three-level-nested-variance-components-analysis2/master/2levelnested/app.R', '_blank')"),
-                            # 
-                            # br(),
-                            # br(),
-                            # 
-                            # sidebarLayout(
-                            #   # Sidebar with a slider and selection inputs
-                            #   sidebarPanel(
-                            #     actionButton("read", "Change"),
-                            #     actionButton("write", "Change") 
-                            #   ),
-                            # ),
-                            
+                             
                             sliderInput("top",
                                         "Select the number of independent groups",
                                         min=3, max=26, step=1, value=7, ticks=FALSE),
@@ -113,18 +87,17 @@ ui <- fluidPage(theme = shinytheme("journal"),
                             .navbar-default .navbar-nav > li > a[data-value='t3'] {color: green;background-color: lightgreen;}
                    ")), 
                             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~end of section to add colour     
-                            tabPanel("Plot and ANOVA", 
+                            tabPanel("1 tab", 
                                      
                                      div(plotOutput("reg.plot", width=fig.width, height=fig.height)),  
                                      
-                                     p(strong("Arithmetic mean is presented as the intercept above the plot when VCA package is used, otherwise the modelled mean is presented.
-                 (Artithmetic mean and modelled mean will match with a balanced design)")) ,
+                                     p(strong("text under plot here")) ,
                                      
                                      div( verbatimTextOutput("reg.summary"))
                                      
                             ) ,
                             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                            tabPanel("Manual ANOVA calculations for equal group sizes only", value=3, 
+                            tabPanel("2 tab", value=3, 
                                      
                                      p(strong("When the sample sizes are equal we can explain ANOVA very simply. Let us estimate:")) ,
                                      
@@ -183,7 +156,7 @@ ui <- fluidPage(theme = shinytheme("journal"),
                             ) ,
                             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                            tabPanel("Manual ANOVA calculations accommodating unequal group sizes", value=3, 
+                            tabPanel("3 tab", value=3, 
                                      
                                      p(strong("More general calculations follow. That is, the groups do not have to be equal in size. We allow the number of observations to vary from group to group, so the within group estimate of 
                           the population variances now becomes a weighted sum of sample variances. Where ",HTML(" <em>i</em>")," denotes the group, ",HTML(" <em>I</em>")," the number of groups, 
@@ -210,11 +183,7 @@ ui <- fluidPage(theme = shinytheme("journal"),
                       \\end{align*}$$"),
                                      p(""), 
                                      
-                                     # p(strong("Where ",HTML(" <em>i</em>")," denotes the group, ",HTML(" <em>I</em>")," the number of groups, 
-                                     #         ",HTML("<em>s</em>")," the standard deviation and 
-                                     #          ",HTML("<em>n</em>"),"
-                                     #          the number of observations.")),
-                                     
+                                    
                                      p(""), 
                                      p(""), 
                                      p(""), 
@@ -262,7 +231,7 @@ ui <- fluidPage(theme = shinytheme("journal"),
                                      
                             ) ,
                             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                            tabPanel("Check assumptions", 
+                            tabPanel("4 tab", 
                                      
                                      p(strong("Is there evidence that the residuals are skewed or otherwise mis shapen
                 in a way that would influence the results? Note, our sample will be imperfect and our population
@@ -274,7 +243,7 @@ ui <- fluidPage(theme = shinytheme("journal"),
                             ) ,
                             
                             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                            tabPanel("List the data", 
+                            tabPanel("5 tab", 
                                      
                                      p(strong("IV is the independent variable, DV is the dependent variable. mu and sd are just for information and are the true mean and sd for each IV group.")),
                                      
