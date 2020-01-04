@@ -656,7 +656,7 @@ server <- shinyServer(function(input, output) {
     })
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # the data to print
-    output$summary2 <- renderPrint({
+    output$summary2 <- renderPrint({ 
         
         return(make.regression()$dd)
         
